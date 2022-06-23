@@ -126,7 +126,7 @@ const ProfileView = Container({
       id: "profile-bio",
       transition: ".7s",
       child: Text(
-        "Saya adalah seorang pelajar kelas IX di SMP Kartika IV-8, saya juga mempelajari bahasa pemrograman untuk mengisi waktu luang.", {
+        "Saya adalah seorang pelajar kelas X di SMK PGRI 3, saya juga mempelajari bahasa pemrograman untuk mengisi waktu luang.", {
           fontFamily: "Manrope",
           color: Colors.white,
           fontWeight: "100",
