@@ -1,0 +1,14 @@
+.profile-picture {
+  height: 130px;
+  width: 130px;
+  border-radius: 100%;
+  padding: 10px;
+  margin-top: 30px;
+}
+
+.profile-username {
+  font-family: "Montserrat";
+  color: white;
+  font-weight: 700;
+  font-size: 30px;
+}

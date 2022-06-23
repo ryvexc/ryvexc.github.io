@@ -1,0 +1,7 @@
+{
+  "editor.lineHeight": 1.5,
+  "liveServer.settings.port": 8002,
+  "editor.wordWrap": "on",
+  "editor.fontFamily": "Jetbrains Mono Light, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+}

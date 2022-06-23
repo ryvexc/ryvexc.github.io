@@ -1,0 +1,12 @@
+/* body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.box {
+    background-color: red;
+    width: 80%;
+    max-width: 800px;
+    height: 100px;
+}
