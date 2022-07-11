@@ -64,8 +64,8 @@ const background = Container({
       backdropFilter: Blur(80),
       top: "0px",
       left: "0px",
-      right: "0px",
-      bottom: "0px",
+      width: "100vw",
+      height: "100vh",
     })    
   ],
   position: Position.fixed,
