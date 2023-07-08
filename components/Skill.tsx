@@ -101,17 +101,17 @@ export default function Skill() {
   return <div className="bg-[#06080f] w-full p-20 px-32 flex flex-col gap-16 items-center">
     <div className="flex items-center justify-center gap-16 flex-wrap flex-row-reverse">
       <div className="">
-        <h1 className="font-sans text-white font-extrabold text-4xl tracking-tight">Beberapa hal lain<br />yang Saya kuasai.</h1>
-        <p className='text-slate-400 mt-7 leading-relaxed'>
+        <h1 className="font-sans text-white font-extrabold lg:text-4xl tracking-tight text-3xl">Beberapa hal lain<br />yang Saya kuasai.</h1>
+        <p className='text-slate-400 mt-7 leading-relaxed lg:text-base text-sm'>
           Selain itu, saya menguasai beberapa hal seperti Bahasa Pemrograman, <br />Library, Framework, Database, dan masih banyak lagi.
         </p>
       </div>
-      <Link href={randomzedSkill.href} className='flex justify-center border border-slate-800 p-7 max-w-[508px] rounded-lg hover:shadow-glow duration-200'>
+      <Link href={randomzedSkill.href} className='flex justify-center border flex-wrap md:flex-nowrap border-slate-800 p-7 max-w-[508px] rounded-lg hover:shadow-glow duration-200'>
         <div className="">
           <img src={randomzedSkill.iconSrc} alt="" className='w-28 min-w-[7rem] aspect-square' />
           <p className='text-slate-300 text-center mt-3 font-semibold text-base'>{randomzedSkill.name}</p>
         </div>
-        <div className="ml-6 text-slate-400 text-center mt-1">
+        <div className="md:ml-6 ml-0 text-slate-400 text-center md:text-left mt-1 text-sm">
           {randomzedSkill.description}
         </div>
       </Link>

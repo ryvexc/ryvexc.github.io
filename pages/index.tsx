@@ -11,39 +11,39 @@ export default function Home() {
     </Head>
 
     <main>
-      <div className="bg-[#090c16] min-h-screen w-full items-center justify-center flex flex-col">
+      <div className="bg-[#090c16] min-h-screen w-full items-center justify-center flex flex-col px-[10%]">
         <img src={'/img/me.jpg'} alt={''} className='w-56 h-56 rounded-full duration-500 hover:w-72 hover:h-72'></img>
         <ProfileName />
-        <p className='text-slate-400 text-center'>Saya adalah seorang pelajar kelas XI di SMK PGRI 3<br />Saya juga mempelajari bahasa pemrograman untuk mengisi waktu luang.</p>
+        <p className='text-slate-400 text-center lg:text-base text-sm'>Saya adalah seorang pelajar kelas XI di SMK PGRI 3<br />Saya juga mempelajari bahasa pemrograman untuk mengisi waktu luang.</p>
       </div>
 
-      <div className="bg-[#06080f] w-full p-32 px-40 flex flex-col gap-16">
+      <div className="bg-[#06080f] w-full p-32 px-[10%] flex flex-col gap-16">
         <div className="flex items-center justify-center gap-16 flex-wrap">
           <div>
-            <h1 className="font-sans text-white font-extrabold text-4xl tracking-tight">Bahasa Pemrograman<br />utama Saya.</h1>
-            <p className='text-slate-400 mt-7 leading-relaxed'>
-              Mengapa Saya menggunakan kedua bahasa tersebut?<br />
-              Karena Saya memilih profesi sebagai Web Developer<br />
+            <h1 className="font-sans text-white font-extrabold lg:text-4xl text-center sm:text-left tracking-tight text-3xl">Bahasa Pemrograman<br />utama Saya.</h1>
+            <p className='text-slate-400 max-w-xl mt-7 leading-relaxed lg:text-base text-sm text-center sm:text-left'>
+              Mengapa Saya menggunakan kedua bahasa tersebut?
+              Karena Saya memilih profesi sebagai Web Developer
               Sehingga bahasa yang Saya gunakan adalah Javascript dan Typescript.
             </p>
           </div>
-          <div className='flex flex-wrap gap-24 px-[1%]'>
+          <div className='flex flex-wrap gap-24 px-[1%] justify-center'>
             <div className="">
-              <img src="/img/javascript.png" alt="" className='w-40 h-40 min-h-[10rem] min-w-[10rem]' />
+              <img src="/img/javascript.png" alt="" className='lg:w-40 lg:h-40 min-h-[8rem] min-w-[8rem] w-32 h-32' />
               <p className='text-slate-200 text-center mt-2 text-base'>Javascript</p>
             </div>
             <div className="">
-              <img src="/img/typescript.png" alt="" className='w-40 h-40 min-h-[10rem] min-w-[10rem]' />
+              <img src="/img/typescript.png" alt="" className='lg:w-40 lg:h-40 min-h-[8rem] min-w-[8rem] w-32 h-32' />
               <p className='text-slate-200 text-center mt-2 text-base'>Typescript</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="bg-[#090c16] w-full py-20 px-32 flex flex-col gap-16">
+      <div className="bg-[#090c16] w-full py-20 px-[10%] flex flex-col gap-16">
         <div>
-          <h1 className="font-sans text-white font-extrabold text-4xl tracking-tight text-center">Framework dan Database <br />yang Saya gunakan.</h1>
-          <p className='text-slate-400 mt-3 mb-16 leading-relaxed text-center'>
+          <h1 className="font-sans text-white font-extrabold text-3xl lg:text-4xl tracking-tight text-center">Framework dan Database <br />yang Saya gunakan.</h1>
+          <p className='text-slate-400 mt-3 mb-16 leading-relaxed text-center text-sm lg:text-base'>
             Saya menggunakan beberapa framework dibawah untuk tujuan produktifitas atau proyek2 kecil
           </p>
           <div className='flex gap-7 flex-wrap items-center justify-center'>
@@ -73,10 +73,10 @@ export default function Home() {
 
       <Skill />
 
-      <div className="bg-[#090c16] w-full py-20 px-40 flex flex-col gap-16 items-center">
+      <div className="bg-[#090c16] w-full py-20 px-[10%] flex flex-col gap-16 items-center">
         <div>
-          <h1 className="font-sans text-white font-extrabold text-4xl tracking-tight text-center">Sekolah dan Pendidikan <br />yang Saya tempuh.</h1>
-          <p className='text-slate-400 mt-3 mb-3 leading-relaxed text-center'>
+          <h1 className="font-sans text-white font-extrabold text-3xl lg:text-4xl tracking-tight text-center">Sekolah dan Pendidikan <br />yang Saya tempuh.</h1>
+          <p className='text-slate-400 mt-3 mb-3 leading-relaxed text-center text-sm lg:text-base'>
             Berikut adalah sekolah dan pendidikan yang saya tempuh selama hidup saya
           </p>
         </div>
@@ -96,11 +96,11 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-[#06080f] w-full p-24 px-40 flex flex-col gap-16">
+      <div className="bg-[#06080f] w-full p-24 px-[10%] flex flex-col gap-16">
         <div className="flex items-center justify-center gap-16 flex-col">
           <div>
-            <h1 className="font-sans text-white font-extrabold text-4xl tracking-tight text-center">Beberapa Projects<br />yang pernah Saya buat.</h1>
-            <p className='text-slate-400 mt-3 mb-3 leading-relaxed text-center'>
+            <h1 className="font-sans text-white font-extrabold text-3xl lg:text-4xl tracking-tight text-center">Beberapa Projects<br />yang pernah Saya buat.</h1>
+            <p className='text-slate-400 mt-3 mb-3 leading-relaxed text-center text-sm lg:text-base'>
               Berikut adalah beberapa projects yang pernah saya lakukan<br />untuk melatih Skill dan mengisi waktu produktifitas
             </p>
           </div>
