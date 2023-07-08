@@ -3,8 +3,25 @@ import Head from 'next/head'
 import Skill from '@/components/Skill';
 import Link from 'next/link';
 import Projects from '@/components/Projects';
+import { getVisibility } from '@/lib/getVisibility';
+import { useEffect } from 'react';
 
 export default function Home() {
+  useEffect(() => {
+    document.querySelectorAll("#chkvis").forEach((element: any) => {
+      element.style.opacity = "0";
+      document.addEventListener("scroll", () => {
+        if (getVisibility(element)) {
+          element.style.opacity = "1";
+        } else {
+          element.style.transition = "0s";
+          element.style.opacity = "0";
+          element.style.transition = "1s";
+        }
+      });
+    })
+  }, []);
+
   return (<>
     <Head>
       <title>Ryve | Arif Kurniawan</title>
@@ -28,11 +45,11 @@ export default function Home() {
             </p>
           </div>
           <div className='flex flex-wrap gap-24 px-[1%] justify-center'>
-            <div className="">
+            <div id="chkvis">
               <img src="/img/javascript.png" alt="" className='lg:w-40 lg:h-40 min-h-[8rem] min-w-[8rem] w-32 h-32' />
               <p className='text-slate-200 text-center mt-2 text-base'>Javascript</p>
             </div>
-            <div className="">
+            <div id="chkvis">
               <img src="/img/typescript.png" alt="" className='lg:w-40 lg:h-40 min-h-[8rem] min-w-[8rem] w-32 h-32' />
               <p className='text-slate-200 text-center mt-2 text-base'>Typescript</p>
             </div>
@@ -47,23 +64,23 @@ export default function Home() {
             Saya menggunakan beberapa framework dibawah untuk tujuan produktifitas atau proyek2 kecil
           </p>
           <div className='flex gap-7 flex-wrap items-center justify-center'>
-            <Link href="https://react.dev" className="hover:shadow-glow duration-200 hover:cursor-pointer w-60 min-w-[240px] rounded-lg border border-slate-800 flex items-center flex-col p-8">
+            <Link id="chkvis" href="https://react.dev" className="hover:shadow-glow duration-500 hover:cursor-pointer w-60 min-w-[240px] rounded-lg border border-slate-800 flex items-center flex-col p-8">
               <img src="/img/react.png" alt="" className='w-28 h-28' />
               <h1 className='mt-3 text-slate-300'>React</h1>
             </Link>
-            <Link href="https://mongodb.com" className="hover:shadow-glow duration-200 hover:cursor-pointer w-60 min-w-[240px] rounded-lg border border-slate-800 flex items-center flex-col p-8">
+            <Link id="chkvis" href="https://mongodb.com" className="hover:shadow-glow duration-500 hover:cursor-pointer w-60 min-w-[240px] rounded-lg border border-slate-800 flex items-center flex-col p-8">
               <img src="/img/mongo.png" alt="" className='w-28 h-28' />
               <h1 className='mt-3 text-slate-300'>MongoDB</h1>
             </Link>
-            <Link href="https://nextjs.org" className="hover:shadow-glow duration-200 hover:cursor-pointer w-60 min-w-[240px] rounded-lg border border-slate-800 flex items-center flex-col p-8">
+            <Link id="chkvis" href="https://nextjs.org" className="hover:shadow-glow duration-500 hover:cursor-pointer w-60 min-w-[240px] rounded-lg border border-slate-800 flex items-center flex-col p-8">
               <img src="/next.svg" alt="" className='w-28 h-28' />
               <h1 className='mt-3 text-slate-300'>Next.js</h1>
             </Link>
-            <Link href="mysql.com" className="hover:shadow-glow duration-200 hover:cursor-pointer w-60 min-w-[240px] rounded-lg border border-slate-800 flex items-center flex-col p-8">
+            <Link id="chkvis" href="mysql.com" className="hover:shadow-glow duration-500 hover:cursor-pointer w-60 min-w-[240px] rounded-lg border border-slate-800 flex items-center flex-col p-8">
               <img src="/img/mysql.png" alt="" className='w-28 h-28' />
               <h1 className='mt-3 text-slate-300'>Mysql</h1>
             </Link>
-            <Link href="https://tailwindcss.com" className="hover:shadow-glow duration-200 hover:cursor-pointer w-60 min-w-[240px] rounded-lg border border-slate-800 flex items-center flex-col p-8">
+            <Link id="chkvis" href="https://tailwindcss.com" className="hover:shadow-glow duration-500 hover:cursor-pointer w-60 min-w-[240px] rounded-lg border border-slate-800 flex items-center flex-col p-8">
               <img src="/img/tailwind.png" alt="" className='w-28 h-28' />
               <h1 className='mt-3 text-slate-300'>Tailwind CSS</h1>
             </Link>
@@ -81,15 +98,15 @@ export default function Home() {
           </p>
         </div>
         <div className='flex gap-12 max-w-7xl flex-wrap justify-center'>
-          <div className='w-full min-w-[389px] max-w-[389px] hover:scale-105 duration-500'>
+          <div id="chkvis" className='w-full min-w-[389px] max-w-[389px] hover:scale-105 duration-500'>
             <img src="/img/sd.jpg" className="aspect-w-16 aspect-h-9 object-cover object-center rounded-lg" alt='' />
             <h1 className="text-center mt-6 text-slate-200 text-lg">SDN Lowokwaru 3 Malang</h1>
           </div>
-          <div className='w-full min-w-[389px] max-w-[389px] hover:scale-105 duration-500'>
+          <div id="chkvis" className='w-full min-w-[389px] max-w-[389px] hover:scale-105 duration-500'>
             <img src="/img/smp.png" className="aspect-w-16 aspect-h-9 object-cover object-center rounded-lg" alt='' />
             <h1 className="text-center mt-6 text-slate-200 text-lg">SMP Kartika IV-8 Malang</h1>
           </div>
-          <div className='w-full min-w-[389px] max-w-[389px] hover:scale-105 duration-500'>
+          <div id="chkvis" className='w-full min-w-[389px] max-w-[389px] hover:scale-105 duration-500'>
             <img src="/img/smk.jpg" className="aspect-w-16 aspect-h-9 object-cover object-center rounded-lg" alt='' />
             <h1 className="text-center mt-6 text-slate-200 text-lg">SMK PGRI 3 Malang</h1>
           </div>

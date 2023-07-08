@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { getVisibility } from "@/lib/getVisibility"
 
 interface ISkillData {
   name: string,
@@ -10,6 +11,21 @@ interface ISkillData {
 
 export default function Skill() {
   const [randomzedSkill, setRandomizedSkill] = useState<ISkillData>({ name: "", description: "", iconSrc: "", href: "" });
+
+  useEffect(() => {
+    document.querySelectorAll("#chkvis").forEach((element: any) => {
+      element.style.opacity = "0";
+      document.addEventListener("scroll", () => {
+        if (getVisibility(element)) {
+          element.style.opacity = "1";
+        } else {
+          element.style.transition = "0s";
+          element.style.opacity = "0";
+          element.style.transition = "1s";
+        }
+      });
+    })
+  }, []);
 
   const skillData: Array<ISkillData> = [
     {
@@ -94,7 +110,6 @@ export default function Skill() {
 
   useEffect(() => {
     setRandomizedSkill(skillData[Math.floor(Math.random() * skillData.length)]);
-
     return () => { };
   }, []);
 
@@ -108,7 +123,9 @@ export default function Skill() {
       </div>
       <Link href={randomzedSkill.href} className='flex justify-center border flex-wrap md:flex-nowrap border-slate-800 p-7 max-w-[508px] rounded-lg hover:shadow-glow duration-200'>
         <div className="">
-          <img src={randomzedSkill.iconSrc} alt="" className='w-28 min-w-[7rem] aspect-square' />
+          <div className="w-28 min-w-[7rem]">
+            <img src={randomzedSkill.iconSrc} alt="" className='w-full aspect-square' />
+          </div>
           <p className='text-slate-300 text-center mt-3 font-semibold text-base'>{randomzedSkill.name}</p>
         </div>
         <div className="md:ml-6 ml-0 text-slate-400 text-center md:text-left mt-1 text-sm">
@@ -119,7 +136,7 @@ export default function Skill() {
 
     <div className='flex gap-7 flex-wrap items-center justify-center max-w-[1400px]'>
       {skillData.map((data: ISkillData) => {
-        if (data.name != randomzedSkill.name) return <Link key={data.name} href={data.href} className="hover:shadow-glow duration-200 hover:cursor-pointer w-60 min-w-[240px] rounded-lg border border-slate-800 flex items-center flex-col p-8">
+        if (data.name != randomzedSkill.name) return <Link id="chkvis" key={data.name} href={data.href} className="hover:shadow-glow duration-200 hover:cursor-pointer w-60 min-w-[240px] rounded-lg border border-slate-800 flex items-center flex-col p-8">
           <img src={data.iconSrc} alt="" className={data.name != "C#" ? 'w-28 aspect-square' : 'w-24 h-28'} />
           <h1 className='mt-3 text-slate-300'>{data.name}</h1>
         </Link>
