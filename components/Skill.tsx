@@ -121,7 +121,7 @@ export default function Skill() {
           Selain itu, saya menguasai beberapa hal seperti Bahasa Pemrograman, <br />Library, Framework, Database, dan masih banyak lagi.
         </p>
       </div>
-      <Link href={randomzedSkill.href} className='flex justify-center border flex-wrap md:flex-nowrap border-slate-800 p-7 max-w-[508px] rounded-lg hover:shadow-glow duration-200'>
+      <Link id="chkvis" href={randomzedSkill.href} className='flex justify-center border flex-wrap md:flex-nowrap border-slate-800 p-7 max-w-[508px] rounded-lg hover:shadow-glow duration-200'>
         <div className="">
           <div className="w-28 min-w-[7rem]">
             <img src={randomzedSkill.iconSrc} alt="" className='w-full aspect-square' />
