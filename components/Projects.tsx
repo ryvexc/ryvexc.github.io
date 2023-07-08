@@ -6,7 +6,7 @@ export default function Projects(): JSX.Element {
   return (
     <Carousel className='max-w-[1265px]' showThumbs={false} showArrows={true} showIndicators={false} showStatus={false} infiniteLoop={true} swipeable={true} >
       <div className=''>
-        <img src="/img/elyx.png" alt="" className="h-[26rem] md:h-96 max-w-[1265px] opacity-0" />
+        <img src="/img/elyx.png" alt="" className="h-[26rem] md:h-[25rem] max-w-[1265px] opacity-0" />
         <div className="w-4/5 p-5 rounded-2xl bg-[#090c16] flex flex-wrap md:flex-nowrap  absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 justify-center">
           <div className="w-full flex items-center justify-center">
             <img className="min-w-[227px]" src="/img/elyx.png" alt="" />
@@ -27,7 +27,7 @@ export default function Projects(): JSX.Element {
         </div>
       </div>
       <div className=''>
-        <img src="/img/elyx.png" alt="" className="h-[26rem] md:h-96 max-w-[1265px] opacity-0" />
+        <img src="/img/elyx.png" alt="" className="h-[26rem] md:h-[25rem] max-w-[1265px] opacity-0" />
         <div className="w-4/5 p-5 rounded-2xl bg-[#090c16] flex flex-wrap md:flex-nowrap absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 justify-center">
           <div className="w-full flex items-center justify-center">
             <img src="/img/ryp.png" alt="" />
@@ -48,7 +48,7 @@ export default function Projects(): JSX.Element {
         </div>
       </div>
       <div className=''>
-        <img src="/img/elyx.png" alt="" className="h-[26rem] md:h-96 max-w-[1265px] opacity-0" />
+        <img src="/img/elyx.png" alt="" className="h-[26rem] md:h-[25rem] max-w-[1265px] opacity-0" />
         <div className="w-4/5 p-5 rounded-2xl bg-[#090c16] flex flex-wrap md:flex-nowrap absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 justify-center">
           <div className="w-4/5 flex items-center justify-center">
             <img src="/img/masbro.png" alt="" />

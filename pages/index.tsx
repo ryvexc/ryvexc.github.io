@@ -107,6 +107,6 @@ export default function Home() {
           <Projects />
         </div>
       </div>
-    </main >
+    </main>
   </>)
 }

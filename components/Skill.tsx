@@ -98,7 +98,7 @@ export default function Skill() {
     return () => { };
   }, []);
 
-  return <div className="bg-[#06080f] w-full p-20 px-32 flex flex-col gap-16 items-center">
+  return <div className="bg-[#06080f] w-full p-20 px-[10%] flex flex-col gap-16 items-center">
     <div className="flex items-center justify-center gap-16 flex-wrap flex-row-reverse">
       <div className="">
         <h1 className="font-sans text-white font-extrabold lg:text-4xl tracking-tight text-3xl">Beberapa hal lain<br />yang Saya kuasai.</h1>
