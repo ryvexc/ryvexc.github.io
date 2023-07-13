@@ -4,9 +4,24 @@ import Skill from '@/components/Skill';
 import Link from 'next/link';
 import Projects from '@/components/Projects';
 import { getVisibility } from '@/lib/getVisibility';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import DynamicIsland from '@/components/DynamicIsland';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExclamation } from '@fortawesome/free-solid-svg-icons';
 
 export default function Home() {
+  const [isDynamicIslandShow, setIsDynamicIslandShow] = useState<boolean>(false);
+  const [notifyElement, setNotifyElement] = useState<JSX.Element>(
+    <div className='flex justify-center items-center h-full w-full'>Tidak ada notifikasi.</div>
+  );
+
+  const notify = async (element: JSX.Element) => {
+    setNotifyElement(element);
+    setIsDynamicIslandShow(true);
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    setIsDynamicIslandShow(false);
+  }
+
   useEffect(() => {
     document.querySelectorAll("#chkvis").forEach((element: any) => {
       element.style.opacity = "0";
@@ -19,13 +34,31 @@ export default function Home() {
           element.style.transition = "1s";
         }
       });
-    })
+    });
+
+    setTimeout(() => notify(
+      <div className="flex flex-col justify-center items-center h-full w-full text-lg">
+        <div className="flex gap-7 items-center justify-center">
+          <FontAwesomeIcon icon={faExclamation} className="text-5xl"></FontAwesomeIcon>
+          <div className="flex flex-col">
+            <h1 className='text-center'>Halo, Saya Ryve!</h1>
+            <h1 className='text-center text-sm'>Biasa dikenal Arif.</h1>
+          </div>
+        </div>
+      </div>
+    ), 2000);
   }, []);
 
   return (<>
     <Head>
       <title>Ryve | Arif Kurniawan</title>
     </Head>
+
+    <div className="sticky top-0">
+      <DynamicIsland title="Halo" defaultShow={isDynamicIslandShow} setDefaultShow={setIsDynamicIslandShow}>
+        {notifyElement}
+      </DynamicIsland>
+    </div>
 
     <main>
       <div className="bg-[#090c16] min-h-screen w-full items-center justify-center flex flex-col px-[10%]">
