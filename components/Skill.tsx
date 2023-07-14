@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { getVisibility } from "@/lib/getVisibility"
+import Image from "next/image"
 
 interface ISkillData {
   name: string,
@@ -15,7 +15,6 @@ export default function Skill({ id }: any) {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        console.log(entry);
         if (entry.isIntersecting) {
           entry.target.classList.add("show");
         } else {
