@@ -96,7 +96,7 @@ export default function Home() {
     }
 
     setTimeout(notifySpotify, 10000);
-    setInterval(notifySpotify, 4 * 60 * 60 * 1000);
+    setInterval(notifySpotify, 240000);
   }, []);
 
   return (<>
