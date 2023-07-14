@@ -78,8 +78,10 @@ export default function Home() {
       const myPlaylists = getDataPlaylistTracks(process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID!, process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET!);
 
       if (myPlaylists) {
-        setInterval(() => {
+        const notifySpotify = () => {
           const selectedTrack = myPlaylists[Math.floor(Math.random() * myPlaylists.length)];
+
+          console.log(selectedTrack);
 
           notify(faSpotify, "text-green-500", selectedTrack.href,
             <div className="flex flex-col justify-center items-center h-full w-full text-lg">
@@ -93,7 +95,10 @@ export default function Home() {
               </div>
             </div>
           )
-        }, 4 * 60 * 60 * 1000);
+        }
+
+        setTimeout(notifySpotify, 10000);
+        setInterval(notifySpotify, 4 * 60 * 60 * 1000);
       };
     }
   }, []);
