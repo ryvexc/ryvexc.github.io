@@ -1,13 +1,10 @@
 export function generateAccessToken(): string {
-	const clientId = "5b23946731944382b57820b316a8cc12";
-	const clientSecret = "c22699983cd7474e95427541d9d97cc9";
-
 	const tokenEndpoint = "https://accounts.spotify.com/api/token";
 
 	const body = new URLSearchParams();
 	body.append("grant_type", "client_credentials");
-	body.append("client_id", clientId);
-	body.append("client_secret", clientSecret);
+	body.append("client_id", process.env.spotifyClientID!);
+	body.append("client_secret", process.env.spotifyClientSecret!);
 	body.append(
 		"scope",
 		"user-read-recently-played user-read-currently-playing user-read-email user-read-private",
