@@ -9,22 +9,24 @@ interface ISkillData {
   href: string
 }
 
-export default function Skill() {
+export default function Skill({ id }: any) {
   const [randomzedSkill, setRandomizedSkill] = useState<ISkillData>({ name: "", description: "", iconSrc: "", href: "" });
 
   useEffect(() => {
-    document.querySelectorAll("#chkvis").forEach((element: any) => {
-      element.style.opacity = "0";
-      document.addEventListener("scroll", () => {
-        if (getVisibility(element)) {
-          element.style.opacity = "1";
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        console.log(entry);
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
         } else {
-          element.style.transition = "0s";
-          element.style.opacity = "0";
-          element.style.transition = "1s";
+          entry.target.classList.remove("show");
         }
-      });
+      })
     })
+
+    document.querySelectorAll("#chkvis").forEach((element: any) => {
+      observer.observe(element)
+    });
   }, []);
 
   const skillData: Array<ISkillData> = [
@@ -113,7 +115,7 @@ export default function Skill() {
     return () => { };
   }, []);
 
-  return <div className="bg-[#06080f] w-full p-20 px-[10%] flex flex-col gap-16 items-center">
+  return <div id={id} className="bg-[#06080f] w-full p-20 px-[10%] flex flex-col gap-16 items-center">
     <div className="flex items-center justify-center gap-16 flex-wrap flex-row-reverse">
       <div className="">
         <h1 className="font-sans text-white font-extrabold lg:text-4xl tracking-tight text-3xl">Beberapa hal lain<br />yang Saya kuasai.</h1>

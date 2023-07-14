@@ -13,10 +13,31 @@ body {
 	font-family: "Poppins", sans-serif;
 }
 
-.fadeOut {
+#chkvis {
 	opacity: 0;
+	filter: blur(10px);
+	transform: translateX(-100%);
+	transition: 0.7s;
 }
 
-.fadeIn {
-	opacity: 1;
+#chkvis:nth-child(2) {
+	transition-delay: 100ms;
+}
+
+#chkvis:nth-child(3) {
+	transition-delay: 200ms;
+}
+
+#chkvis:nth-child(4) {
+	transition-delay: 300ms;
+}
+
+#chkvis:nth-child(5) {
+	transition-delay: 400ms;
+}
+
+.show {
+	opacity: 1 !important;
+	filter: none !important;
+	transform: translateX(0) !important;
 }
