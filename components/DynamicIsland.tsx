@@ -12,7 +12,7 @@ export default function DynamicIsland({ iconColor, notifyIcon, href, title, chil
       setTime(`${date.getHours() < 10 ? "0" + date.getHours() : date.getHours()}:${date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()}:${date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds()}`);
     }, 1000);
 
-    return () => { console.log(iconColor) }
+    return () => { }
   });
 
   return <div onClick={e => window.open(href, '_blank')?.open()} onMouseOver={e => setShow(true)} onMouseOut={e => setShow(false)} className={`transform duration-300 ease-in-out rounded-lg bg-slate-800 bg-opacity-40 backdrop-blur-xl ${show || defaultShow ? "h-24 w-80" : "h-8 w-40"}`}>

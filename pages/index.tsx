@@ -75,12 +75,10 @@ export default function Home() {
     ), 6000);
 
     return () => {
-      const myPlaylists = getDataPlaylistTracks();
+      const myPlaylists = getDataPlaylistTracks(process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID!, process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET!);
 
       if (myPlaylists) {
         const selectedTrack = myPlaylists[Math.floor(Math.random() * myPlaylists.length)];
-
-        console.log(selectedTrack);
 
         setTimeout(() => {
           notify(faSpotify, "text-green-500", selectedTrack.href,

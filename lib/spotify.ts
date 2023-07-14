@@ -1,10 +1,13 @@
-export function generateAccessToken(): string {
+export function generateAccessToken(
+	clientID: string,
+	clientSecret: string,
+): string {
 	const tokenEndpoint = "https://accounts.spotify.com/api/token";
 
 	const body = new URLSearchParams();
 	body.append("grant_type", "client_credentials");
-	body.append("client_id", process.env.spotifyClientID!);
-	body.append("client_secret", process.env.spotifyClientSecret!);
+	body.append("client_id", clientID!);
+	body.append("client_secret", clientSecret!);
 	body.append(
 		"scope",
 		"user-read-recently-played user-read-currently-playing user-read-email user-read-private",
@@ -20,10 +23,10 @@ export function generateAccessToken(): string {
 	return response.access_token;
 }
 
-export function getPlaylists() {
+export function getPlaylists(clientID: string, clientSecret: string) {
 	const playlistEndpoint =
 		"https://api.spotify.com/v1/playlists/6mbZheaFzPWMX5pIe35wYk";
-	const accessToken = generateAccessToken();
+	const accessToken = generateAccessToken(clientID, clientSecret);
 
 	const xhr = new XMLHttpRequest();
 	xhr.open("GET", playlistEndpoint, false);
@@ -40,8 +43,8 @@ export function getPlaylists() {
 	return playlistData;
 }
 
-export function getDataPlaylistTracks() {
-	const playlists = getPlaylists();
+export function getDataPlaylistTracks(clientID: string, clientSecret: string) {
+	const playlists = getPlaylists(clientID, clientSecret);
 
 	const tracks: Array<{ title: string; artist: string; href: string }> = [];
 
