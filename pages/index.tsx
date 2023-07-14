@@ -74,33 +74,29 @@ export default function Home() {
       </div >
     ), 6000);
 
-    return () => {
-      const myPlaylists = getDataPlaylistTracks(process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID!, process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET!);
+    const myPlaylists = getDataPlaylistTracks(process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID!, process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET!);
 
-      if (myPlaylists) {
-        const notifySpotify = () => {
-          const selectedTrack = myPlaylists[Math.floor(Math.random() * myPlaylists.length)];
+    const notifySpotify = () => {
+      const selectedTrack = myPlaylists[Math.floor(Math.random() * myPlaylists.length)];
 
-          console.log(selectedTrack);
+      console.log(selectedTrack);
 
-          notify(faSpotify, "text-green-500", selectedTrack.href,
-            <div className="flex flex-col justify-center items-center h-full w-full text-lg">
-              <div className="flex gap-7 items-center justify-center">
-                <FontAwesomeIcon icon={faSpotify} className="text-5xl text-green-500"></FontAwesomeIcon>
-                <div className="flex flex-col">
-                  <h1 className='text-md font-semibold'>{truncateText(selectedTrack.title, 20)}</h1>
-                  <h1 className='text-xs'>{selectedTrack.artist}</h1>
-                  <h1 className='text-sm'>Ryve is Listening to.</h1>
-                </div>
-              </div>
+      notify(faSpotify, "text-green-500", selectedTrack.href,
+        <div className="flex flex-col justify-center items-center h-full w-full text-lg">
+          <div className="flex gap-7 items-center justify-center">
+            <FontAwesomeIcon icon={faSpotify} className="text-5xl text-green-500"></FontAwesomeIcon>
+            <div className="flex flex-col">
+              <h1 className='text-md font-semibold'>{truncateText(selectedTrack.title, 20)}</h1>
+              <h1 className='text-xs'>{selectedTrack.artist}</h1>
+              <h1 className='text-sm'>Ryve is Listening to.</h1>
             </div>
-          )
-        }
-
-        setTimeout(notifySpotify, 10000);
-        setInterval(notifySpotify, 4 * 60 * 60 * 1000);
-      };
+          </div>
+        </div>
+      )
     }
+
+    setTimeout(notifySpotify, 10000);
+    setInterval(notifySpotify, 4 * 60 * 60 * 1000);
   }, []);
 
   return (<>
