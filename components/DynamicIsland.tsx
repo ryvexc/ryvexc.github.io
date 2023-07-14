@@ -1,10 +1,21 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function DynamicIsland({ title, children, defaultShow, setDefaultShow }: any) {
   const [show, setShow] = useState<boolean>(false);
+  const [time, setTime] = useState<string>("00:00");
 
-  return <div onMouseOver={e => setShow(true)} onMouseOut={e => setShow(false)} className={`absolute left-1/2 transform duration-300 ease-in-out rounded-lg -translate-x-1/2 bg-slate-900 bg-opacity-80 backdrop-blur-xl ${show || defaultShow ? "h-20 w-80" : "h-8 w-40"} mt-5`}>
-    {/* <div className={`absolute ${!show && !defaultShow ? 'delay-200 opacity-1' : 'opacity-0'} select-none duration-300 overflow-hidden w-full h-full flex justify-center items-center`}>{title}</div> */}
+  useEffect(() => {
+    setInterval(() => {
+      const date = new Date();
+
+      setTime(`${date.getHours() < 10 ? "0" + date.getHours() : date.getHours()}:${date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()}:${date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds()}`);
+    }, 1000);
+
+    return () => { }
+  });
+
+  return <div onMouseOver={e => setShow(true)} onMouseOut={e => setShow(false)} className={`transform duration-300 ease-in-out rounded-lg bg-slate-800 bg-opacity-40 backdrop-blur-xl ${show || defaultShow ? "h-20 w-80" : "h-8 w-40"}`}>
+    <div className={`absolute ${!show && !defaultShow ? 'delay-200 opacity-1' : 'opacity-0'} select-none duration-300 overflow-hidden w-full h-full flex justify-center items-center`}>{time}</div>
     <div className={`${show || defaultShow ? 'opacity-1 scale-100' : 'opacity-0 scale-0'} ease-in-out select-none duration-300 overflow-hidden w-full h-full`}>{children}</div>
   </div>
 }
