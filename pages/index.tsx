@@ -3,23 +3,32 @@ import Head from 'next/head'
 import Skill from '@/components/Skill';
 import Link from 'next/link';
 import Projects from '@/components/Projects';
-import { getVisibility } from '@/lib/getVisibility';
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import DynamicIsland from '@/components/DynamicIsland';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExclamation } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faClock, faExclamation } from '@fortawesome/free-solid-svg-icons';
 import Navbar from '@/components/Navbar';
-import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faSpotify } from '@fortawesome/free-brands-svg-icons';
 import NavbarMenu from '@/components/NavbarMenu';
+import Footer from '@/components/Footer';
+import Image from 'next/image';
+import { truncateText } from '@/lib/truncate';
+import { generateAccessToken, getDataPlaylistTracks, getPlaylists } from '@/lib/spotify';
 
 export default function Home() {
   const [isDynamicIslandShow, setIsDynamicIslandShow] = useState<boolean>(false);
   const [notifyElement, setNotifyElement] = useState<JSX.Element>(
     <div className='flex justify-center items-center h-full w-full'>Tidak ada notifikasi.</div>
   );
+  const [notifyIcon, setNotifyIcon] = useState(faClock);
+  const [notifyIconColor, setNotifyIconColor] = useState<string>("");
+  const [notifyHref, setNotifyHref] = useState<string>("");
   const [navbarIsActive, setNavbarIsActive] = useState<boolean>(false);
 
-  const notify = async (element: JSX.Element) => {
+  const notify = async (statusIcon: any, iconColor: string, href: string, element: JSX.Element) => {
+    setNotifyIconColor(iconColor);
+    setNotifyHref(href);
+    setNotifyIcon(statusIcon);
     setNotifyElement(element);
     setIsDynamicIslandShow(true);
     await new Promise(resolve => setTimeout(resolve, 3000));
@@ -29,7 +38,6 @@ export default function Home() {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        console.log(entry);
         if (entry.isIntersecting) {
           entry.target.classList.add("show");
         } else {
@@ -42,29 +50,54 @@ export default function Home() {
       observer.observe(element)
     });
 
-    setTimeout(() => notify(
-      <div className="flex flex-col justify-center items-center h-full w-full text-lg">
+    setTimeout(() => notify(faExclamation, "text-orange-400", "",
+      <div className="flex flex-col justify-center items-center h-full w-full text-lg" >
         <div className="flex gap-7 items-center justify-center">
-          <FontAwesomeIcon icon={faExclamation} className="text-5xl"></FontAwesomeIcon>
+          <FontAwesomeIcon icon={faExclamation} className="text-5xl text-orange-400"></FontAwesomeIcon>
           <div className="flex flex-col">
             <h1 className='text-center'>Halo, Saya Ryve!</h1>
             <h1 className='text-center text-sm'>Biasa dikenal Arif.</h1>
           </div>
         </div>
-      </div>
+      </div >
     ), 2000);
 
-    setTimeout(() => notify(
-      <div className="flex flex-col justify-center items-center h-full w-full text-lg">
+    setTimeout(() => notify(faInstagram, "text-fuchsia-600", "https://instagram.com/ryve.tsx",
+      <div className="flex flex-col justify-center items-center h-full w-full text-lg" >
         <div className="flex gap-7 items-center justify-center">
-          <FontAwesomeIcon icon={faInstagram} className="text-5xl"></FontAwesomeIcon>
+          <FontAwesomeIcon icon={faInstagram} className="text-5xl text-fuchsia-600"></FontAwesomeIcon>
           <div className="flex flex-col">
             <h1 className=''>@ryve.tsx</h1>
             <h1 className='text-center text-sm'>Follow saya di instagram.</h1>
           </div>
         </div>
-      </div>
+      </div >
     ), 6000);
+
+    return () => {
+      const myPlaylists = getDataPlaylistTracks();
+
+      if (myPlaylists) {
+        const selectedTrack = myPlaylists[Math.floor(Math.random() * myPlaylists.length)];
+
+        console.log(selectedTrack);
+
+        setTimeout(() => {
+          notify(faSpotify, "text-green-500", selectedTrack.href,
+            <div className="flex flex-col justify-center items-center h-full w-full text-lg">
+              <div className="flex gap-7 items-center justify-center">
+                <FontAwesomeIcon icon={faSpotify} className="text-5xl text-green-500"></FontAwesomeIcon>
+                <div className="flex flex-col">
+                  <h1 className='text-md font-semibold'>{truncateText(selectedTrack.title, 20)}</h1>
+                  <h1 className='text-xs'>{selectedTrack.artist}</h1>
+                  <h1 className='text-sm'>Arif sedang mendengar.</h1>
+                </div>
+              </div>
+            </div>
+          )
+        }, 10000);
+      }
+    }
   }, []);
 
   return (<>
@@ -77,14 +110,14 @@ export default function Home() {
     <main className="overflow-x-hidden">
       <div className="fixed top-0 w-full z-50">
         <Navbar setNavbarMenuActive={setNavbarIsActive} navbarMenuActive={navbarIsActive}>
-          <DynamicIsland title="Halo" defaultShow={isDynamicIslandShow} setDefaultShow={setIsDynamicIslandShow}>
+          <DynamicIsland iconColor={notifyIconColor} href={notifyHref} notifyIcon={notifyIcon} title="Halo" defaultShow={isDynamicIslandShow} setDefaultShow={setIsDynamicIslandShow}>
             {notifyElement}
           </DynamicIsland>
         </Navbar>
       </div>
 
       <div id='home' className="bg-[#090c16] min-h-screen w-full items-center justify-center flex flex-col px-[10%]">
-        <img src={'/img/me.jpg'} alt={''} className='w-56 h-56 rounded-full duration-500 hover:w-72 hover:h-72'></img>
+        <img src={'/img/me.jpg'} alt={''} className='w-56 h-56 rounded-full duration-500 hover:w-72 hover:h-72' />
         <ProfileName />
         <p className='text-slate-400 text-center lg:text-base text-sm'>Saya adalah seorang pelajar kelas XI di SMK PGRI 3<br />Saya juga mempelajari bahasa pemrograman untuk mengisi waktu luang.</p>
       </div>
@@ -180,5 +213,7 @@ export default function Home() {
         </div>
       </div>
     </main>
+
+    <Footer />
   </>)
 }
