@@ -78,9 +78,9 @@ export default function Home() {
       const myPlaylists = getDataPlaylistTracks(process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID!, process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET!);
 
       if (myPlaylists) {
-        const selectedTrack = myPlaylists[Math.floor(Math.random() * myPlaylists.length)];
+        setInterval(() => {
+          const selectedTrack = myPlaylists[Math.floor(Math.random() * myPlaylists.length)];
 
-        setTimeout(() => {
           notify(faSpotify, "text-green-500", selectedTrack.href,
             <div className="flex flex-col justify-center items-center h-full w-full text-lg">
               <div className="flex gap-7 items-center justify-center">
@@ -88,13 +88,13 @@ export default function Home() {
                 <div className="flex flex-col">
                   <h1 className='text-md font-semibold'>{truncateText(selectedTrack.title, 20)}</h1>
                   <h1 className='text-xs'>{selectedTrack.artist}</h1>
-                  <h1 className='text-sm'>Arif sedang mendengar.</h1>
+                  <h1 className='text-sm'>Ryve is Listening to.</h1>
                 </div>
               </div>
             </div>
           )
-        }, 10000);
-      }
+        }, 4 * 60 * 60 * 1000);
+      };
     }
   }, []);
 
