@@ -79,8 +79,6 @@ export default function Home() {
     const notifySpotify = () => {
       const selectedTrack = myPlaylists[Math.floor(Math.random() * myPlaylists.length)];
 
-      console.log(selectedTrack);
-
       notify(faSpotify, "text-green-500", selectedTrack.href,
         <div className="flex flex-col justify-center items-center h-full w-full text-lg">
           <div className="flex gap-7 items-center justify-center">
@@ -95,8 +93,12 @@ export default function Home() {
       )
     }
 
-    setTimeout(notifySpotify, 10000);
-    setInterval(notifySpotify, 240000);
+    return () => {
+      if (myPlaylists.length > 0) {
+        setTimeout(notifySpotify, 10000);
+        setInterval(notifySpotify, 240000)
+      }
+    };
   }, []);
 
   return (<>

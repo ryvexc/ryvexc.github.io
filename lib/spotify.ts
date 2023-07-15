@@ -2,31 +2,37 @@ export function generateAccessToken(
 	clientID: string,
 	clientSecret: string,
 ): string {
-	const tokenEndpoint = "https://accounts.spotify.com/api/token";
+	try {
+		const tokenEndpoint = "https://accounts.spotify.com/api/token";
 
-	const body = new URLSearchParams();
-	body.append("grant_type", "client_credentials");
-	body.append("client_id", clientID!);
-	body.append("client_secret", clientSecret!);
-	body.append(
-		"scope",
-		"user-read-recently-played user-read-currently-playing user-read-email user-read-private",
-	);
+		const body = new URLSearchParams();
+		body.append("grant_type", "client_credentials");
+		body.append("client_id", clientID!);
+		body.append("client_secret", clientSecret!);
+		body.append(
+			"scope",
+			"user-read-recently-played user-read-currently-playing user-read-email user-read-private",
+		);
 
-	const xhr = new XMLHttpRequest();
-	xhr.open("POST", tokenEndpoint, false);
-	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xhr.send(body.toString());
+		const xhr = new XMLHttpRequest();
+		xhr.open("POST", tokenEndpoint, false);
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhr.send(body.toString());
 
-	const response = JSON.parse(xhr.responseText);
+		const response = JSON.parse(xhr.responseText);
 
-	return response.access_token;
+		return response.access_token;
+	} catch {
+		return "";
+	}
 }
 
 export function getPlaylists(clientID: string, clientSecret: string) {
 	const playlistEndpoint =
 		"https://api.spotify.com/v1/playlists/6mbZheaFzPWMX5pIe35wYk";
 	const accessToken = generateAccessToken(clientID, clientSecret);
+
+	if (accessToken == "") return {};
 
 	const xhr = new XMLHttpRequest();
 	xhr.open("GET", playlistEndpoint, false);

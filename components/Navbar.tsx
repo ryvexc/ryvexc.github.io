@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 export default function Navbar({ children, setNavbarMenuActive, navbarMenuActive }: any): JSX.Element {
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -42,6 +43,9 @@ export default function Navbar({ children, setNavbarMenuActive, navbarMenuActive
         <ul className="flex w-full gap-10 justify-start">
           <li onClick={e => handleScrollClick("skill")} className='cursor-pointer mt-1 hover:text-teal-500 hover:underline hover:underline-offset-8 duration-100 underline-offset-0'>Skill</li>
           <li onClick={e => handleScrollClick("projects")} className='cursor-pointer mt-1 hover:text-teal-500 hover:underline hover:underline-offset-8 duration-100 underline-offset-0'>Projects</li>
+          <li className='cursor-pointer mt-1 hover:text-teal-500 hover:underline hover:underline-offset-8 duration-100 underline-offset-0'>
+            <Link href="/blog">Blog</Link>
+          </li>
         </ul>
       </ul>
       :
