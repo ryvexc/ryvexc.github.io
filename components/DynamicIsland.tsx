@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState, useEffect } from "react";
 
 export default function DynamicIsland({ iconColor, notifyIcon, href, title, children, defaultShow, setDefaultShow }: any) {
   const [show, setShow] = useState<boolean>(false);

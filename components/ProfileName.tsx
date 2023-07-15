@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function ProfileName(): JSX.Element {
   const [name, setName] = useState<string>("Arif Kurniawan");

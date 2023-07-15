@@ -1,7 +1,6 @@
-import { faGithub, faInstagram, faSpotify, faYoutube } from "@fortawesome/free-brands-svg-icons"
-import { faDiagramNext } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faGithub, faInstagram, faSpotify, faYoutube } from "@fortawesome/free-brands-svg-icons"
 
 export default function Footer(): JSX.Element {
   return <div className="flex justify-center w-full bg-[#090c16] px-24 py-8 gap-16 flex-wrap">

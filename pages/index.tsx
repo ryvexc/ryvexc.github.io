@@ -1,19 +1,18 @@
-import ProfileName from '@/components/ProfileName';
-import Head from 'next/head'
-import Skill from '@/components/Skill';
+import Head from 'next/head';
 import Link from 'next/link';
-import Projects from '@/components/Projects';
-import { use, useEffect, useState } from 'react';
-import DynamicIsland from '@/components/DynamicIsland';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faClock, faExclamation } from '@fortawesome/free-solid-svg-icons';
+import Skill from '@/components/Skill';
 import Navbar from '@/components/Navbar';
-import { faInstagram, faSpotify } from '@fortawesome/free-brands-svg-icons';
-import NavbarMenu from '@/components/NavbarMenu';
 import Footer from '@/components/Footer';
-import Image from 'next/image';
+import Projects from '@/components/Projects';
+import NavbarMenu from '@/components/NavbarMenu';
+import ProfileName from '@/components/ProfileName';
+import DynamicIsland from '@/components/DynamicIsland';
 import { truncateText } from '@/lib/truncate';
-import { generateAccessToken, getDataPlaylistTracks, getPlaylists } from '@/lib/spotify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useEffect, useState } from 'react';
+import { getDataPlaylistTracks } from '@/lib/spotify';
+import { faClock, faExclamation } from '@fortawesome/free-solid-svg-icons';
+import { faInstagram, faSpotify } from '@fortawesome/free-brands-svg-icons';
 
 export default function Home() {
   const [isDynamicIslandShow, setIsDynamicIslandShow] = useState<boolean>(false);
