@@ -68,8 +68,8 @@ export default function Index({ id }: any): JSX.Element {
         </Navbar>
       </div>
 
-      <div className="p-16 flex justify-center">
-        <div className="p-5 flex flex-col justify-center items-center">
+      <div className="p-8 py-16 md:p-16 flex justify-center">
+        <div className="p-1 md:p-7 flex flex-col justify-center items-center">
           {isLoading && !blogData[0] && <p>Loading...</p>}
           {(isError && !isLoading) && <p>Error</p>}
           {/* blog entry */}

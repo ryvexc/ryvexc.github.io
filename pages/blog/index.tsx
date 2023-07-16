@@ -85,8 +85,8 @@ export default function Index(): JSX.Element {
       </div>
 
       {/* new blog */}
-      <div className="p-16 flex justify-center">
-        <div className="p-5 flex flex-col">
+      <div className="p-8 py-16 md:p-16 flex justify-center">
+        <div className="p-1 md:p-7 flex flex-col">
           {isLoading && <p>Loading...</p>}
           {(isError && !isLoading) && <p>Error</p>}
           {/* blog entry */}
@@ -94,7 +94,7 @@ export default function Index(): JSX.Element {
             blogData.map((blog: any) => {
               return <div key={blog._id} className="flex gap-x-10 py-5">
                 {/* <img src={blog.thumbnail} alt="" className="w-96 rounded-xl" /> */}
-                <div className="flex flex-col gap-y-5 w-full">
+                <div className="flex flex-col gap-y-5 w-full max-w-6xl">
                   <div>
                     <Link href={{
                       pathname: '/blog/page/[id]',
@@ -108,7 +108,7 @@ export default function Index(): JSX.Element {
                     })}
                   </div>
                   <hr />
-                  <p className="text-slate-400 line-clamp-3 max-w-xl leading-relaxed lg:text-base text-sm text-center sm:text-left">
+                  <p className="text-slate-400 w-full line-clamp-3 leading-relaxed lg:text-base text-sm text-center sm:text-left">
                     {blog.content.map((content: ReactJSONComponent) => {
                       console.log(content);
                       return content.content
