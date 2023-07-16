@@ -92,7 +92,7 @@ export default function Index({ id }: any): JSX.Element {
                 <div className="h-px bg-slate-700 mt-2" />
                 <div className={`flex flex-col ${blogData[0].lineSpacing}`}>
                   {blogData[0].content.map((comps: ReactJSONComponent, index: number) => {
-                    return <ReactJSONCompiler id={"component-" + index} jsonComponent={comps} />
+                    return <ReactJSONCompiler key={index} id={"component-" + index} jsonComponent={comps} />
                   })}
                 </div>
               </div>

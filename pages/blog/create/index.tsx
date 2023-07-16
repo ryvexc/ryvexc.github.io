@@ -201,7 +201,7 @@ export default function Index(): JSX.Element {
         <h1 className="font-semibold p-6 text-xl pb-3 text-slate-200 border-b border-slate-700">Components</h1>
         <div className="text-slate-400 flex flex-col font-light w-full mt-3">
           {components.map((comp: ReactJSONComponent, index: number) => {
-            return <p onClick={e => investigateComponent(index)} className="hover:bg-slate-900 hover:text-slate-300 text-slate-400 pl-6 py-1">{comp.component}</p>
+            return <p key={index} onClick={e => investigateComponent(index)} className="hover:bg-slate-900 hover:text-slate-300 text-slate-400 pl-6 py-1">{comp.component}</p>
           })}
         </div>
       </div>
@@ -254,7 +254,7 @@ export default function Index(): JSX.Element {
                 <div className="h-px bg-slate-700 mt-2" />
                 <div className="flex flex-col" ref={mainPage}>
                   {components.map((comps: ReactJSONComponent, index: number) => {
-                    return <div onClick={e => investigateComponent(index)} id={"investigated-component-" + index} className="">
+                    return <div key={index} onClick={e => investigateComponent(index)} id={"investigated-component-" + index} className="">
                       <ReactJSONCompiler id={"component-" + index} jsonComponent={comps} />
                     </div>
                   })}
