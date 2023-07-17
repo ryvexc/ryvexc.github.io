@@ -92,12 +92,10 @@ export default function Home() {
       )
     }
 
-    return () => {
-      if (myPlaylists.length > 0) {
-        setTimeout(notifySpotify, 10000);
-        setInterval(notifySpotify, 240000)
-      }
-    };
+    if (myPlaylists.length > 0) {
+      setTimeout(notifySpotify, 10000);
+      setInterval(notifySpotify, 240000)
+    }
   }, []);
 
   return (<>
